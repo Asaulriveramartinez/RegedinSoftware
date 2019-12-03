@@ -1,0 +1,37 @@
+<br/><br/><br/>
+<div class="modal-content text-center tabcontent">
+<div class="table-responsive">
+  <table class="table">
+
+    <thead>
+      <div class="row">
+        <tr class="success btn-info active justify-content-center">
+          <th colspan="2">Id</th>
+          <th>Nombre Aplicación</th>
+          <th>Cliente</th>
+          <th>Nivel Servicio</th>
+          <th>Estado</th>
+        </tr>
+      </div>
+    </thead>
+
+    <tbody>
+      <div class="row">
+      <tr class="text-center">
+        <td colspan="2"><%= @applicationclient.id%></td>
+        <td><%= @applicationclient.application.name %></td>
+        <td><%= @applicationclient.client.name %></td>
+        <td><%= @applicationclient.servicelevel %></td>
+        <td><%= @applicationclient.state %></td>
+        </tr>
+      </div>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<div class="actions">
+</br>
+<% comment= link_to 'Editar', edit_applicationclient_path(@applicationclient) %>
+<%= link_to 'Regresar', applicationclients_path, class: "btn btn-info" %>
+</div>

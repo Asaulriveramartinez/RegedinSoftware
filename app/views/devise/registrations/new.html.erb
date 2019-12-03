@@ -1,0 +1,47 @@
+
+<% flash.each do |key, value| %>
+
+<div class="alert alert-<%= key %>">
+  <a href="#" data-dismiss="alert" ></a>
+  <ul style="list-style-type: none">
+    <li>
+      <% if key == "alert"%>
+      <div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong> <%= value %></strong>
+      </div>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<% end %>
+
+<div class="container">
+<div class="card card-container">
+<h4>Regedin Software</h4>
+  <br/>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+  <form class="form-signin">
+    <%= f.label "Usuario", :id=>"text-label" %><br />
+    <%= f.text_field :username,  class:"form-control", required: false, autofocus: true, input_html: { autocomplete: "username" }, :placeholder=> "nombre.apellido" %>
+
+    <%= f.label "Correo", :id=>"text-label" %><br />
+    <%= f.email_field :email, class:"form-control", required: true, autofocus: true, input_html: { autocomplete: "email" }, :placeholder=> "ejemplo@gmail.com", :required=> :true %>
+  
+    <%= f.label "Contraseña", :id=>"text-label" %><br />
+    <%= f.password_field :password, class:"form-control", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "off" }, :placeholder=> "Contraseña", :required=> :true  %>
+  
+    <%= f.label "Repetir Contraseña", :id=>"text-label" %><br />
+    <%= f.password_field :password_confirmation, class:"form-control", required: true, input_html: { autocomplete: "off" }, :placeholder=> "Contraseña", :required=> :true  %>
+  
+<br>
+  <%= f.submit "Crear Usuario", class:'btn btn-lg btn-block btn-signin' %>
+<br/>
+<%= render "devise/shared/links" %>
+</form>
+</div><!--div card card container-->
+<% end %>
+</div><!--div container-->

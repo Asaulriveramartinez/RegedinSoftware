@@ -1,0 +1,63 @@
+<br/>
+<div class="container">
+  <!-- The Modal -->
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+ <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title"><kbd>Registro incidencias</kbd></h4>
+    </div>
+<!-- Modal body -->
+  <div class="modal-body">
+    <div class="modal-content tabcontent">
+        <div class="dialog">
+<%= simple_form_for(@incident) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<form class="form-inline">
+    <label class="form-group col-md-4">
+      <%= f.association :userapplication, label_method: :id, class: "form-control mb-2 mr-sm-2"%>
+    </label>
+
+    <label class="form-group col-md-4">
+       <%= f.association :area, class: "form-control mb-2 mr-sm-2"%>
+    </label>
+  
+    <label class="form-group col-md-3">
+       <%= f.association :user, class: "form-control mb-2 mr-sm-2" %>
+    </label>
+  
+    <label class="form-group col-md-4">
+       <%= f.association :criticality, class: "form-control mb-2 mr-sm-2" %>
+    </label>
+  
+    <label class="form-group col-md-7">
+       <%= f.input :datereport, class: "form-control mb-2 mr-sm-2" %>
+    </label>
+  
+    <label class="form-group col-md-3">
+        <%= f.label :state%>
+        <%= f.select :state, options_for_select([['Activo', true], ['Inactivo', false]]) %>
+    </label>
+  
+    <label class="form-group col-md-4">
+      <%= f.input :description, placeholder: 'Describe la incidencia claramente.', class: "form-control mb-2 mr-sm-2"%>
+    </label>
+
+  <label class="form-group">
+     <%= f.submit 'Guardar', method: :new, data: { confirm: 'Desea Reportar la incidencia' }, class:"btn btn-info btn-md"%>
+  </label>
+      <label class="form-group">
+        <%= link_to 'Regresar', vistareportes_path, class:"btn btn-info btn-md" %>
+      </label>
+ 
+<% end %>
+
+       </form>
+      </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>

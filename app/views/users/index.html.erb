@@ -1,0 +1,99 @@
+<br/><br/><br/>
+<h1 style="color: #6c757d;">Administración</h1>
+<div class="tab">
+  <button class="tablinks" onclick="openLink(event, 'Roles')"><%= link_to 'Role', roles_path, style: "color:rgb(23, 162, 184);" %></button>
+  <button class="tablinks" onclick="openLink(event, 'Clientes')"><%= link_to 'Cliente', clients_path, style: "color:rgb(23, 162, 184);" %></button>
+  <button class="tablinks active" onclick="openLink(event, 'Usuarios')"><%= link_to 'Usuario', users_path, style: "color:rgb(23, 162, 184);" %></button>
+</div>
+
+<br/>
+<%= notice%>
+
+ <br/><br/>
+  
+  <div class="footer">
+    <%= link_to 'Nuevo', new_user_path, class: "btn btn-info" %>
+  </div>&nbsp;
+<div class="custom-search-form">
+  <%=form_tag (users_path), method: :get do %>
+  <%=text_field_tag(:search, params[:search], placeholder: "Buscar...")%>
+<%end%>
+</div>
+<br/>
+<div id="Usuarios" class="modal-content text-center tabcontent">
+<div class="table-responsive">
+<table class="table">
+
+  <thead>
+  <div class="row">
+    <tr class="alert alert-secondary justify-content-center">
+      <th colspan="3">Id</th>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Rol</th>
+      <th>Nombre Usuario</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+      
+    </tr>
+    </div>
+  </thead>
+
+  <% @users.each do |user| %>
+
+  <tbody>
+    <div class="row">
+      <tr class="text-center">
+        <td colspan="3"><kbd><%= user.id %></kbd></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role.name %></td>
+        <td><%= user.username %></td>
+        <td>
+          <% if user.state %>           
+             <img src="/img/estado_activo_24.png" alt="Activo" />
+          <% else %>           
+             <img src="/img/estado_falso_24.png" alt="Inactivo" />
+          <% end %>
+        </td>
+
+        <td>
+          <%= link_to edit_user_path(user) do %>
+            <%= image_tag "/img/edit_24.png", :title=>"Editar" %>
+          <% end %>
+          &nbsp; &nbsp;
+           <%= link_to user, method: :delete, data: { confirm: 'Are you sure?', remote: true } do %>
+                <%= image_tag "/img/eliminar_24.png", :title=>"Eliminar" %>
+           <% end %>
+          &nbsp; &nbsp;
+              <% if user.role.id == 1 %>
+				        <%= link_to user_area_index_path(user.id) do %>
+                  <%= image_tag "/img/areas_24.png" %>
+              <% end %>
+            &nbsp; &nbsp;
+               <%= link_to application_operator_index_path(user.id) do %>
+            <%= image_tag "/img/application_24.png" %>
+          <% end %>
+			<% end %>
+			<% if user.role.id == 2 %>
+				<%= link_to user_client_index_path(user.id) do %>
+         <%= image_tag "/img/cliente_24.png" %>
+          <% end %>
+        &nbsp; &nbsp;
+          <%= link_to user_application_index_path(user.id) do %>
+            <%= image_tag "/img/application_24.png" %>
+          <% end %>
+			<% end %>
+        </td>
+      </tr>
+      </div>
+      </tbody>
+
+    <% end %>
+  
+</table>
+</div>
+</div>
+<div id="spacing">
+<%= paginate(@users) %>
+</div>

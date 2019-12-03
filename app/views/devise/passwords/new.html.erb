@@ -1,0 +1,36 @@
+<div class="container">
+<div class="card card-container">
+<h4>Regedin Software</h4>
+<div class="imgcontainer">
+     <%= image_tag "/img/login.png", :alt=>"Contraseña" %>
+  </div>
+  <br/>
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+<form class="form-signin">
+<% flash.each do |key, value| %>
+    <a>
+      <% if key == "alert"%>
+      <div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong> <%= value %></strong>
+      </div>
+      <% end %>
+    </a>
+<% end %>
+
+<%= f.label "Correo", :id=>"text-label" %><br />
+    <%= f.email_field :email, class:"form-control", required: true, :placeholder=> "ejemplo@gmail.com", autofocus: true, input_html: { autocomplete: "off" } %>
+<br/>
+    <%= f.button :submit, "Resetear contraseña", class:'btn btn-info btn-lg btn-block' %>
+    <br/>
+
+    <%- if controller_name != 'sessions' %>
+  <%= link_to "Inicia Sesión", new_session_path(resource_name) %><br />
+<% end %>
+
+</form>
+</div><!--div card card container-->
+<% end %>
+</div><!--div container-->

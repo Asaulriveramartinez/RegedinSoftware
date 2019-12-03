@@ -1,0 +1,40 @@
+<br/><br/><br/>
+<div class="modal-content text-center tabcontent">
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <div class="row">
+        <tr class="success btn-info active justify-content-center">
+         <th colspan="2">Id</th>
+          <th>Área</th>
+          <th>Aplicación</th>
+          <th>Quien reporta</th>
+          <th>Nivel de atención</th>
+          <th>Fecha/Hora</th>
+          <th>Cambio Contraseña</th>
+          <th>Estado</th>
+        </tr>
+      </div>
+    </thead>
+
+    <tbody>
+    <div class="row">
+      <tr class="text-center">
+        <td colspan="2"><kbd><%= @incident.id%></kbd></td>
+        <td><%= @incident.area.name %></td>
+        <td><%= @incident.userapplication.applicationclient.application.name %></td>
+        <td><%= @incident.user.name %></td>
+        <td><%= @incident.criticality.name %></td>
+        <td><%= @incident.datereport %></td>
+        <td><%= @incident.description %></td>
+        <td><%= @incident.state %></td>
+      </tr>
+      </div>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+<%= link_to 'Edit', edit_incident_path(@incident) %> |
+<%= link_to 'Back', incidents_path %>

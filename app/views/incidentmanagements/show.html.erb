@@ -1,0 +1,53 @@
+<br/><br/><br/>
+  <h1 style="color: #6c757d;">Gestión incidencia</h1>
+    <div class="tab">
+    <button class="tablinks active" onclick="openLink(event, 'Gestiona incidencia')"><%= link_to 'Gestiona incidencia', @incidentmanagements_path, style: "color:rgb(23, 162, 184);" %></button>
+    <button class="tablinks" onclick="openLink(event, 'Consulta incidencia')"><%= link_to 'Consulta incidencia', incidentmanagements_path, style: "color:rgb(23, 162, 184);" %></button>
+    <button class="tablinks" onclick="openLink(event, 'Estadistica')"><%= link_to 'Estadistica', style: "color:rgb(23, 162, 184);" %></button>
+  </div>
+<%= notice%>
+<br/><br/>
+
+<div class="modal-content text-center">
+<div class="table-responsive">
+  <table class="table">
+
+    <thead>
+      <div class="row">
+        <tr class="success btn-info active justify-content-center">
+          <th colspan="2">Gestión ticket</th>
+          <th>Usuario</th>
+          <th>Incidencia</th>
+          <th>Fecha/Hora</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+        </tr>
+      </div>
+    </thead>
+
+    <tbody>
+      <div class="row">
+      <tr class="text-center">
+        <td colspan="2"><%= @incidentmanagement.id%></td>
+        <td><%= @incidentmanagement.user.name%></td>
+        <td><%= @incidentmanagement.incident.id%></td>
+        <td><%= @incidentmanagement.datereport%></td>
+        <td><%= @incidentmanagement.description%></td> 
+        <td>
+          <% if @incidentmanagement.state %>
+             <img src="/img/estado_activo_24.png" alt="Activo" />
+          <% else %>           
+             <img src="/img/estado_falso_24.png" alt="Inactivo" />
+          <% end %>
+        </td>
+        </tr>
+      </div>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<label class="form-group">
+  <%= link_to 'Editar', edit_incidentmanagement_path(@incidentmanagement), class: "btn btn-info btn-md" %>
+  <%= link_to 'Regresar', incidentmanagements_path, class: "btn btn-info btn-md" %>
+</label>

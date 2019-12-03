@@ -1,0 +1,59 @@
+es:
+   activerecord:
+     attributes:
+       login:
+         username: "Usuario"
+         email: "Correo electrónico"
+         password: "Contraseña"
+         password_confirmation: "Confirmar contraseña"
+         current_password: "Cambiar contraseña"
+       role:
+         name: "Role"
+         state: "Estado"
+       client: 
+         name: "Nombre de empresa"
+         reason: "Razón social"
+         addres: "Dirección"
+         telephone: "Teléfono"
+         contact: "Contacto"
+         state: "Estado"
+       user:
+         name: "Nombre"
+         mail: "Correo electronico"
+         role: "Role"
+         username: "Nombre de usuario"
+         password: "Contraseña"
+         change_password: "Cambio de contraseña"
+         state: "Estado"
+       application:
+         name: "Aplicación"
+         state: "Estado"
+       area:
+         name: "Área"
+         state: "Estado"
+       applicationoperator:
+         user: "Asignar nombre"
+         application: "Asignar aplicación"
+         state: "Estado"
+       criticality:
+         name: "Estado de criticidad"
+         state: "Estado"
+       login:
+         email: "Correo electronico"
+         password: "Contraseña"
+         password_confirmation: "Confirmar contraseña"
+         current_password: "Contraseña actual"
+       applicationclient:
+         user: "Asignar nombre"
+         application: "Asignar aplicación"
+         client: "Nombre empresa"
+         servicelevel: "Nivel de servicio"
+         state: "Estado"
+       userarea:
+         user: "Asignar nombre"
+         area: "Asignar área"
+         state: "Estado"
+       userclient:
+         client: "Asignar Empresa"
+         user: "Asignar usuario"
+         state: "Estado"
